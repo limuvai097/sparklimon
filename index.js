@@ -7,7 +7,7 @@ app.use(express.json());
 
 app.get('/', (req,res)=>{
     console.log('Received a GET request');
-    res.sendFile(path.join(__dirname, 'Views', 'index.html'));
+    res.sendFile(path.join(__dirname, 'mysite', 'index.html'));
 })
 
 app.listen(port, ()=>{

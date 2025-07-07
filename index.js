@@ -3,7 +3,7 @@
 require('dotenv').config();
 
 // telegram.js থেকে notifyTelegram ফাংশন ইমপোর্ট করো
-const notifyTelegram = require('./mysite/meseg');
+const notifyTelegram = require('./mysite/msg');
 
 // নিচের দুইটা লাইনে console.log আর console.error override হয়ে Telegram-এ মেসেজ যাবে
 

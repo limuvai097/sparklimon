@@ -1,58 +1,92 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  
-
-  
-  <meta property="og:title" content="50% off all itme " />
-  <meta property="og:description" content="borso purti uplokkhe 50% off price" />
-  <meta property="og:image" content="https://i.imgur.com/uuiqDaU.jpeg" />
-  <meta property="og:url" content="" />
-
-  
-  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free Fire Diamond 50% off</title>
+  <title>Free Fire Diamond BD</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #154577;
       margin: 0;
       padding: 0;
-      color: #333;
     }
+    /* Banner CSS Start */
+    .banner {
+      background-color: #ff6600; /* orange */
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      border-radius: 8px;
+      margin: 20px auto;
+      max-width: 900px;
+    }
+
+    .banner img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .banner h1 {
+      margin: 0 0 10px 0;
+      font-size: 28px;
+    }
+
+    .banner p {
+      margin: 0;
+      font-size: 16px;
+    }
+    /* Banner CSS End */
+
     .container {
       max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
+      margin: 20px auto;
       background: #fff;
-      border-radius: 10px;
+      border-radius: 8px;
+      padding: 20px;
     }
     h2 {
       text-align: center;
       color: #154577;
+      margin-bottom: 20px;
     }
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
-      margin: 20px 0;
     }
     .item {
-      padding: 10px;
-      border: 1px solid #ccc;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      border: 1px solid #e0e0e0;
       border-radius: 5px;
       background-color: #f9f9f9;
+      color: #333;
+      font-size: 14px;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
     .item:hover {
       background-color: #e0f0ff;
+      border-color: #007bff;
     }
-    .uid-input {
+    .item .price {
+      color: #FF4A00;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    form {
       margin-top: 20px;
       text-align: center;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
     }
     input[type="text"] {
       padding: 10px;
@@ -60,421 +94,108 @@
       max-width: 300px;
       border-radius: 5px;
       border: 1px solid #ccc;
+      margin-bottom: 10px;
     }
     .buy-button {
-      padding: 10px 20px;
       background-color: orange;
-      color: white;
+      color: #fff;
       border: none;
-      border-radius: 5px;
-      margin-top: 10px;
-      cursor: pointer;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.5);
-    }
-    .payment-box {
-      background: white;
-      width: 90vw;
-      max-width: 400px;
-      margin: 100px auto;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      box-sizing: border-box;
-      text-align: center;
-      position: relative;
-    }
-    .payment-box .close {
-      position: absolute;
-      right: 10px;
-      top: 10px;
-      font-size: 24px;
-      color: #999;
-      cursor: pointer;
-    }
-    .logo img {
-      width: 100px;
-      max-width: 100%;
-    }
-    .info {
-      margin-top: 10px;
-      background: #f9f9f9;
-      padding: 10px;
-      border-radius: 8px;
-      text-align: left;
-    }
-    .info p {
-      margin: 5px 0;
-    }
-    .amount {
-      font-weight: bold;
-      color: green;
-    }
-    label {
-      display: block;
-      margin: 15px 0 5px;
-      text-align: left;
-    }
-    input[type="text"].bkash-input {
-      width: 100%;
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-      font-size: 16px;
-    }
-    .btn {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-    }
-    button {
-      padding: 10px 15px;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-      flex: 1;
-      margin: 0 5px;
-      font-size: 16px;
-    }
-    .cancel { background: #ddd; color: #333; }
-    .confirm { background: #e6007e; color: white; }
-    .footer {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 12px;
-      color: #555;
-    }
-    #methodPopup {
-      display: none;
-      position: fixed;
-      z-index: 10000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.5);
-      justify-content: center;
-      align-items: center;
-    }
-    #methodPopup .popup-box {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 320px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    #methodPopup .popup-actions {
-      margin-top: 15px;
-      display: flex;
-      justify-content: space-around;
-    }
-    #methodPopup .popup-actions button {
       padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 14px;
+      border-radius: 5px;
       cursor: pointer;
-      color: white;
-      flex: 1;
-      margin: 0 8px;
+      font-size: 16px;
     }
-    #methodPopup .popup-actions button:first-child {
-      background: #e6007e;
-    }
-    #methodPopup .popup-actions button:last-child {
-      background: #FF4A00;
+    .buy-button:hover {
+      background-color: darkorange;
     }
   </style>
 </head>
 <body>
+
+  <!-- Banner Section Added -->
+  <div class="banner">
+    <img src="https://i.imgur.com/e8KzvXR.jpeg" alt="Free Fire Banner" />
+    <h1>Free Fire Diamond BD - Best Prices!</h1>
+    <p>Exclusive offers for Bangladesh players</p>
+    <p style="font-size:18px; font-weight:bold; color:yellow; margin-top:10px;">
+      ⚡ ৫০% ছাড় সব প্রোডাক্টে! সীমিত সময়ের জন্য!
+    </p>
+  </div>
+
   <div class="container">
-    <h2>Free Fire Diamond BD</h2><div class="product-grid" id="productGrid">
-  <div class="item" data-price="12.5" data-original="25">
-    25 Diamonds<br>
-    <span class="price"><s>৳25</s> ৳12.50</span>
-  </div>
-  <div class="item" data-price="20" data-original="40">
-    50 Diamonds<br>
-    <span class="price"><s>৳40</s> ৳20.00</span>
-  </div>
-  <div class="item" data-price="40" data-original="80">
-    115 Diamonds<br>
-    <span class="price"><s>৳80</s> ৳40.00</span>
-  </div>
-  <div class="item" data-price="80" data-original="160">
-    240 Diamonds<br>
-    <span class="price"><s>৳160</s> ৳80.00</span>
-  </div>
-  <div class="item" data-price="120" data-original="240">
-    355 Diamonds<br>
-    <span class="price"><s>৳240</s> ৳120.00</span>
-  </div>
-  <div class="item" data-price="160" data-original="320">
-    480 Diamonds<br>
-    <span class="price"><s>৳320</s> ৳160.00</span>
-  </div>
-  <div class="item" data-price="172.5" data-original="345">
-    505 Diamonds<br>
-    <span class="price"><s>৳345</s> ৳172.50</span>
-  </div>
-  <div class="item" data-price="202.5" data-original="405">
-    610 Diamonds<br>
-    <span class="price"><s>৳405</s> ৳202.50</span>
-  </div>
-  <div class="item" data-price="242.5" data-original="485">
-    725 Diamonds<br>
-    <span class="price"><s>৳485</s> ৳242.50</span>
-  </div>
-  <div class="item" data-price="405" data-original="810">
-    1240 Diamonds<br>
-    <span class="price"><s>৳810</s> ৳405.00</span>
-  </div>
-  <div class="item" data-price="812.5" data-original="1625">
-    2530 Diamonds<br>
-    <span class="price"><s>৳1625</s> ৳812.50</span>
-  </div>
-  <div class="item" data-price="1625" data-original="3250">
-    5060 Diamonds<br>
-    <span class="price"><s>৳3250</s> ৳1625.00</span>
-  </div>
-  <div class="item" data-price="2437.5" data-original="4875">
-    7590 Diamonds<br>
-    <span class="price"><s>৳4875</s> ৳2437.50</span>
-  </div>
-  <div class="item" data-price="3250" data-original="6500">
-    10120 Diamonds<br>
-    <span class="price"><s>৳6500</s> ৳3250.00</span>
-  </div>
-  <div class="item" data-price="4075" data-original="8150">
-    12650 Diamonds<br>
-    <span class="price"><s>৳8150</s> ৳4075.00</span>
-  </div>
-  <div class="item" data-price="60" data-original="120">
-    EVO ACCESS 3 DAY<br>
-    <span class="price"><s>৳120</s> ৳60.00</span>
-  </div>
-  <div class="item" data-price="60" data-original="120">
-    EVO ACCESS 7 DAY<br>
-    <span class="price"><s>৳120</s> ৳60.00</span>
-  </div>
-  <div class="item" data-price="175" data-original="350">
-    EVO ACCESS 30 DAY<br>
-    <span class="price"><s>৳350</s> ৳175.00</span>
-  </div>
-  <div class="item" data-price="80" data-original="160">
-    Weekly Membership<br>
-    <span class="price"><s>৳160</s> ৳80.00</span>
-  </div>
-  <div class="item" data-price="400" data-original="800">
-    Monthly Membership<br>
-    <span class="price"><s>৳800</s> ৳400.00</span>
-  </div>
-  <div class="item" data-price="25" data-original="50">
-    Weekly Lite<br>
-    <span class="price"><s>৳50</s> ৳25.00</span>
-  </div>
-  <div class="item" data-price="22.5" data-original="45">
-    Level Up Pass Level 6<br>
-    <span class="price"><s>৳45</s> ৳22.50</span>
-  </div>
-  <div class="item" data-price="37.5" data-original="75">
-    Level Up Pass Level 10<br>
-    <span class="price"><s>৳75</s> ৳37.50</span>
-  </div>
-  <div class="item" data-price="37.5" data-original="75">
-    Level Up Pass Level 15<br>
-    <span class="price"><s>৳75</s> ৳37.50</span>
-  </div>
-  <div class="item" data-price="37.5" data-original="75">
-    Level Up Pass Level 20<br>
-    <span class="price"><s>৳75</s> ৳37.50</span>
-  </div>
-  <div class="item" data-price="37.5" data-original="75">
-    Level Up Pass Level 25<br>
-    <span class="price"><s>৳75</s> ৳37.50</span>
-  </div>
-  <div class="item" data-price="55" data-original="110">
-    Level Up Pass Level 30<br>
-    <span class="price"><s>৳110</s> ৳55.00</span>
-  </div>
-  <div class="item" data-price="225" data-original="450">
-    Level Up Pass All Level<br>
-    <span class="price"><s>৳450</s> ৳225.00</span>
-  </div>
-</div>
-    
+    <h2>Free Fire Diamond BD</h2>
+    <div class="product-grid" id="productGrid">
+      <div class="item" data-price="25">25 Diamonds <span class="price">৳25</span></div>
+      <div class="item" data-price="40">50 Diamonds <span class="price">৳40</span></div>
+      <div class="item" data-price="80">115 Diamonds <span class="price">৳80</span></div>
+      <div class="item" data-price="160">240 Diamonds <span class="price">৳160</span></div>
+      <div class="item" data-price="240">355 Diamonds <span class="price">৳240</span></div>
+      <div class="item" data-price="320">480 Diamonds <span class="price">৳320</span></div>
+      <div class="item" data-price="345">505 Diamonds <span class="price">৳345</span></div>
+      <div class="item" data-price="405">610 Diamonds <span class="price">৳405</span></div>
+      <div class="item" data-price="485">725 Diamonds <span class="price">৳485</span></div>
+      <div class="item" data-price="810">1240 Diamonds <span class="price">৳810</span></div>
+      <div class="item" data-price="1625">2530 Diamonds <span class="price">৳1625</span></div>
+      <div class="item" data-price="3250">5060 Diamonds <span class="price">৳3250</span></div>
+      <div class="item" data-price="4875">7590 Diamonds <span class="price">৳4875</span></div>
+      <div class="item" data-price="6500">10120 Diamonds <span class="price">৳6500</span></div>
+      <div class="item" data-price="8150">12650 Diamonds <span class="price">৳8150</span></div>
+      <div class="item" data-price="120">EVO ACCESS 3 DAY <span class="price">৳120</span></div>
+      <div class="item" data-price="120">EVO ACCESS 7 DAY <span class="price">৳120</span></div>
+      <div class="item" data-price="350">EVO ACCESS 30 DAY <span class="price">৳350</span></div>
+      <div class="item" data-price="160">Weekly Membership <span class="price">৳160</span></div>
+      <div class="item" data-price="800">Monthly Membership <span class="price">৳800</span></div>
+      <div class="item" data-price="50">Weekly Lite <span class="price">৳50</span></div>
+      <div class="item" data-price="45">Level Up Pass - Level 6 <span class="price">৳45</span></div>
+      <div class="item" data-price="75">Level Up Pass - Level 10 <span class="price">৳75</span></div>
+      <div class="item" data-price="75">Level Up Pass - Level 15 <span class="price">৳75</span></div>
+      <div class="item" data-price="75">Level Up Pass - Level 20 <span class="price">৳75</span></div>
+      <div class="item" data-price="75">Level Up Pass - Level 25 <span class="price">৳75</span></div>
+      <div class="item" data-price="110">Level Up Pass - Level 30 <span class="price">৳110</span></div>
+      <div class="item" data-price="450">Level Up Pass - All Level <span class="price">৳450</span></div>
     </div>
-    <form id="buyForm" class="uid-input">
-      <label for="uid">UID *</label><br />
-      <input type="text" id="uid" name="uid" placeholder="আপনার UID এখানে দিন" /><br />
+
+    <form id="buyForm">
+      <label for="uid">UID *</label>
+      <input type="text" id="uid" name="uid" placeholder="আপনার UID এখানে দিন" />
+      <br>
       <input type="hidden" id="selectedPrice" name="price" />
       <button type="submit" class="buy-button">Buy Now</button>
     </form>
   </div>
 
-  <div id="methodPopup">
-    <div class="popup-box">
-      <p>পেমেন্ট পদ্ধতি নির্বাচন করুন</p>
-      <div class="popup-actions">
-        <button id="btnBkash">bKash</button>
-        <button id="btnNagad">Nagad</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="paymentModal" class="modal">
-    <div class="payment-box">
-      <span class="close">&times;</span>
-      <div class="logo">
-        <img src="https://i.imgur.com/Wg6qBrg.jpeg" alt="bKash Logo" />
-      </div>
-      <div class="info">
-        <p><strong>Merchant:</strong> Mobile Care</p>
-        <p><strong>Invoice:</strong> Vertex Bazaar-64</p>
-        <p><strong>Amount:</strong> <span class="amount">৳00.00</span></p>
-        <p><strong>UID:</strong> <span class="uid-text"></span></p>
-      </div>
-      <form id="bkashForm" action="/submit-payment" method="POST">
-        <!-- Hidden fields -->
-        <input type="hidden" name="uid" id="hiddenUid" />
-        <input type="hidden" name="price" id="hiddenPrice" />
-        <label for="bkash-number">Your bKash Number</label>
-        <input
-          type="text"
-          class="bkash-input"
-          id="bkash-number"
-          name="bkash-number"
-          placeholder="01XXXXXXXXX"
-          maxlength="11"
-          pattern="01[0-9]{9}"
-          required
-        />
-        <div class="btn">
-          <button type="button" class="cancel">Cancel</button>
-          <button type="submit" class="confirm">Confirm</button>
-        </div>
-      </form>
-      <div class="footer">
-        📞 16247 <br /> &copy; 2025 bKash, All Rights Reserved
-      </div>
-    </div>
-  </div>
-
   <script>
-  document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("buyForm");
-  const priceInput = document.getElementById("selectedPrice");
-  const methodPopup = document.getElementById("methodPopup");
-  const paymentModal = document.getElementById("paymentModal");
-  const closeBtn = paymentModal.querySelector(".close");
-  const cancelBtn = paymentModal.querySelector(".cancel");
-  const amountSpan = paymentModal.querySelector(".amount");
-  const uidSpan = paymentModal.querySelector(".uid-text");
-  const bkashNumberInput = document.getElementById("bkash-number");
-  const hiddenUid = document.getElementById("hiddenUid");
-  const hiddenPrice = document.getElementById("hiddenPrice");
-  const btnBkash = document.getElementById("btnBkash");
-  const btnNagad = document.getElementById("btnNagad");
-  const confirmBtn = document.querySelector(".confirm");
+    document.addEventListener("DOMContentLoaded", function () {
+      const priceInput = document.getElementById("selectedPrice");
 
-  document.getElementById("productGrid").addEventListener("click", function (e) {
-    if (e.target.classList.contains("item")) {
-      document.querySelectorAll(".item").forEach(el => el.style.border = "1px solid #ccc");
-      e.target.style.border = "2px solid orange";
-      priceInput.value = e.target.getAttribute("data-price");
-    }
-  });
+      // Apply 50% discount to all items
+      document.querySelectorAll(".item").forEach(item => {
+        const originalPrice = parseInt(item.getAttribute("data-price"));
+        const discountedPrice = Math.round(originalPrice * 0.5);
+        item.setAttribute("data-price", discountedPrice);
+        item.querySelector(".price").textContent = `৳${discountedPrice}`;
+      });
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const uid = document.getElementById("uid").value.trim();
-    const price = priceInput.value;
-    if (!uid || !price) {
-      alert("দয়া করে UID এবং প্রোডাক্ট নির্বাচন করুন।");
-      return;
-    }
-    methodPopup.style.display = "flex";
-  });
+      document.getElementById("productGrid").addEventListener("click", function (e) {
+        const item = e.target.closest(".item");
+        if (item) {
+          document.querySelectorAll(".item").forEach(el => el.style.borderColor = "#e0e0e0");
+          item.style.borderColor = "orange";
+          priceInput.value = item.getAttribute("data-price");
+        }
+      });
 
-  btnBkash.addEventListener("click", function () {
-    methodPopup.style.display = "none";
-    openPaymentModal("bKash");
-
-    // bKash এর confirm বাটনের রঙ
-    confirmBtn.style.background = "#e6007e";
-  });
-
-  btnNagad.addEventListener("click", function () {
-    methodPopup.style.display = "none";
-    openPaymentModal("Nagad");
-
-    // Nagad এর confirm বাটনের রঙ
-    confirmBtn.style.background = "#FF4A00";
-  });
-
-  function openPaymentModal(method) {
-    const price = priceInput.value;
-    const uid = document.getElementById("uid").value.trim();
-
-    amountSpan.innerText = `৳${price}`;
-    uidSpan.innerText = uid;
-
-    hiddenUid.value = uid;
-    hiddenPrice.value = price;
-
-    if (method === "Nagad") {
-      paymentModal.querySelector(".logo img").src = "https://i.imgur.com/QDLNfiZ.png";
-      paymentModal.querySelector(".logo img").alt = "Nagad Logo";
-      document.querySelector('label[for="bkash-number"]').innerText = "Your Nagad Number";
-      bkashNumberInput.placeholder = "01XXXXXXXXX";
-      bkashNumberInput.name = "nagad-number";
-    } else {
-      paymentModal.querySelector(".logo img").src = "https://i.imgur.com/Wg6qBrg.jpeg";
-      paymentModal.querySelector(".logo img").alt = "bKash Logo";
-      document.querySelector('label[for="bkash-number"]').innerText = "Your bKash Number";
-      bkashNumberInput.placeholder = "01XXXXXXXXX";
-      bkashNumberInput.name = "bkash-number";
-    }
-
-    bkashNumberInput.value = "";
-    paymentModal.style.display = "block";
-  }
-
-  closeBtn.addEventListener("click", () => {
-    paymentModal.style.display = "none";
-  });
-
-  cancelBtn.addEventListener("click", () => {
-    paymentModal.style.display = "none";
-  });
-
-  const bkashForm = document.getElementById("bkashForm");
-  bkashForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    console.log("Payment Number:", bkashNumberInput.value);
-    console.log("UID:", hiddenUid.value);
-    console.log("Price:", hiddenPrice.value);
-
-    // Submit the form programmatically
-    bkashForm.submit();
-  });
-});
-   
+      document.getElementById("buyForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const uid = document.getElementById("uid").value.trim();
+        const price = priceInput.value;
+        if (!uid || !price) {
+          alert("দয়া করে UID এবং প্রোডাক্ট নির্বাচন করুন।");
+          return;
+        }
+        alert(`Order Placed!\nUID: ${uid}\nPrice: ৳${price}`);
+      });
+    });
   </script>
 </body>
 </html>

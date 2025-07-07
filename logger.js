@@ -1,18 +1,27 @@
 const axios = require("axios");
 
-// BotFather থেকে পাওয়া Bot Token বসাও
-const botToken = "8184541746:AAFBqmyBiRPELqm8FnYefSNi0XzRIJcLbnA";
+// BotFather থেকে পাওয়া Bot Token .env ফাইলে রাখাই নিরাপদ
+const botToken = process.env.BOT_TOKEN || "8184541746:AAFBqmyBiRPELqm8FnYefSNi0XzRIJcLbnA";
 
-// তোমার Telegram chat id বসাও
+// তোমার Telegram chat id
 const chatId = "6675812027";
 
+const originalLog = console.log;
+const originalError = console.error;
+
 function notifyTelegram(message) {
+  const MAX_LENGTH = 4000;
+  const safeMessage = message.length > MAX_LENGTH
+    ? message.slice(0, MAX_LENGTH) + "..."
+    : message;
+
   const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
   axios.post(url, {
     chat_id: chatId,
-    text: message,
+    text: safeMessage,
   }).catch((err) => {
-    process.stderr.write("Telegram notification failed: " + err.message + "\n");
+    originalError("Telegram notification failed:", err.message);
   });
 }
 
@@ -20,14 +29,14 @@ function notifyTelegram(message) {
 console.log = (...args) => {
   const message = `ℹ️ Log: ${args.join(" ")}`;
   notifyTelegram(message);
-  process.stdout.write(message + "\n");
+  originalLog(...args);
 };
 
 // Override console.error
 console.error = (...args) => {
   const message = `❗ Error: ${args.join(" ")}`;
   notifyTelegram(message);
-  process.stderr.write(message + "\n");
+  originalError(...args);
 };
 
 module.exports = notifyTelegram;

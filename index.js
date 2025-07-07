@@ -1,4 +1,22 @@
 
+// .env ফাইল থেকে environment variables লোড করবে
+require('dotenv').config();
+
+// telegram.js থেকে notifyTelegram ফাংশন ইমপোর্ট করো
+const notifyTelegram = require('./mysite/meseg');
+
+// নিচের দুইটা লাইনে console.log আর console.error override হয়ে Telegram-এ মেসেজ যাবে
+
+console.log("🚀 Server started successfully!");
+console.error("❌ Warning: Something went wrong!");
+
+// সরাসরি notifyTelegram কল করেও মেসেজ পাঠাতে পারো
+notifyTelegram("👋 এই মেসেজটা সরাসরি index.js থেকে Telegram এ পাঠানো হলো।");
+
+
+
+
+
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');

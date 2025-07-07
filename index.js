@@ -1,3 +1,10 @@
+require("./logger");
+
+console.log("Server is running...");
+console.error("This is a test error for Telegram notification!");
+
+
+
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');

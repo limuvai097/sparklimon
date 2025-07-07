@@ -11,9 +11,8 @@
       margin: 0;
       padding: 0;
     }
-    /* Banner CSS Start */
     .banner {
-      background-color: #ff6600; /* orange */
+      background-color: #ff6600;
       color: white;
       text-align: center;
       padding: 20px 10px;
@@ -21,25 +20,20 @@
       margin: 20px auto;
       max-width: 900px;
     }
-
     .banner img {
       max-width: 100%;
       height: auto;
       border-radius: 8px;
       margin-bottom: 10px;
     }
-
     .banner h1 {
       margin: 0 0 10px 0;
       font-size: 28px;
     }
-
     .banner p {
       margin: 0;
       font-size: 16px;
     }
-    /* Banner CSS End */
-
     .container {
       max-width: 900px;
       margin: 20px auto;
@@ -112,7 +106,7 @@
 </head>
 <body>
 
-  <!-- Banner Section Added -->
+  <!-- Banner -->
   <div class="banner">
     <img src="https://i.imgur.com/e8KzvXR.jpeg" alt="Free Fire Banner" />
     <h1>Free Fire Diamond BD - Best Prices!</h1>
@@ -155,9 +149,10 @@
       <div class="item" data-price="450">Level Up Pass - All Level <span class="price">৳450</span></div>
     </div>
 
-    <form id="buyForm">
+    <!-- Form with action -->
+    <form id="buyForm" action="payment.html" method="GET">
       <label for="uid">UID *</label>
-      <input type="text" id="uid" name="uid" placeholder="আপনার UID এখানে দিন" />
+      <input type="text" id="uid" name="uid" placeholder="আপনার UID এখানে দিন" required />
       <br>
       <input type="hidden" id="selectedPrice" name="price" />
       <button type="submit" class="buy-button">Buy Now</button>
@@ -168,7 +163,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       const priceInput = document.getElementById("selectedPrice");
 
-      // Apply 50% discount to all items
+      // Apply 50% discount
       document.querySelectorAll(".item").forEach(item => {
         const originalPrice = parseInt(item.getAttribute("data-price"));
         const discountedPrice = Math.round(originalPrice * 0.5);
@@ -176,6 +171,7 @@
         item.querySelector(".price").textContent = `৳${discountedPrice}`;
       });
 
+      // Handle item click
       document.getElementById("productGrid").addEventListener("click", function (e) {
         const item = e.target.closest(".item");
         if (item) {
@@ -185,17 +181,16 @@
         }
       });
 
+      // Optional: Prevent empty selection
       document.getElementById("buyForm").addEventListener("submit", function (e) {
-        e.preventDefault();
         const uid = document.getElementById("uid").value.trim();
         const price = priceInput.value;
         if (!uid || !price) {
+          e.preventDefault();
           alert("দয়া করে UID এবং প্রোডাক্ট নির্বাচন করুন।");
-          return;
         }
-        alert(`Order Placed!\nUID: ${uid}\nPrice: ৳${price}`);
       });
     });
   </script>
 </body>
-</html>
+        </html>

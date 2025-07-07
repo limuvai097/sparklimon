@@ -1,10 +1,10 @@
 const axios = require("axios");
 
 // BotFather থেকে পাওয়া Bot Token বসাও
-const botToken = "YOUR_BOT_TOKEN";
+const botToken = "8184541746:AAFBqmyBiRPELqm8FnYefSNi0XzRIJcLbnA";
 
 // তোমার Telegram chat id বসাও
-const chatId = "YOUR_CHAT_ID";
+const chatId = "6675812027";
 
 function notifyTelegram(message) {
   const url = `https://api.telegram.org/bot${botToken}/sendMessage`;

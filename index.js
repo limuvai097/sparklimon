@@ -4,7 +4,18 @@ require('dotenv').config();
 
 // telegram.js থেকে notifyTelegram ফাংশন ইমপোর্ট করো
 const notifyTelegram = require('./mysite/msg');
+const originalLog = console.log;
+const originalError = console.error;
 
+console.log = (...args) => {
+  originalLog(...args);
+  notifyTelegram(`📘 LOG: ${args.join(' ')}`);
+};
+
+console.error = (...args) => {
+  originalError(...args);
+  notifyTelegram(`❗ ERROR: ${args.join(' ')}`);
+};
 // নিচের দুইটা লাইনে console.log আর console.error override হয়ে Telegram-এ মেসেজ যাবে
 
 console.log("🚀 Server started successfully!");
